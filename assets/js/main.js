@@ -13,6 +13,39 @@
     });
   }
 
+
+  // Menu button toggles the entire nav overlay
+  const menuBtn = document.querySelector('.menu-button');
+  const siteNav = document.getElementById('site-nav');
+  if(menuBtn && siteNav){
+    menuBtn.addEventListener('click', () => {
+      const isOpen = siteNav.classList.toggle('open');
+      siteNav.setAttribute('aria-hidden', String(!isOpen));
+      menuBtn.setAttribute('aria-expanded', String(isOpen));
+    });
+    // Optional: close menu when clicking outside or pressing Escape
+    document.addEventListener('click', (e) => {
+      if(isOpen() && !siteNav.contains(e.target) && e.target !== menuBtn){
+        closeMenu();
+      }
+    });
+    document.addEventListener('keydown', (e) => {
+      if(isOpen() && (e.key === 'Escape' || e.key === 'Esc')){
+        closeMenu();
+      }
+    });
+    function isOpen(){
+      return siteNav.classList.contains('open');
+    }
+    function closeMenu(){
+      siteNav.classList.remove('open');
+      siteNav.setAttribute('aria-hidden', 'true');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    }
+  }
+
+  // Menu button removed; dropdown handled via CSS hover on desktop and inline on mobile.
+
   const y = document.getElementById('year');
   if(y){ y.textContent = new Date().getFullYear(); }
 
@@ -94,8 +127,10 @@
       if(u) src = u;
     }
     if(!src){
-      // Prefer sampling the page background (lawn3), fall back to hero (lawn1)
-      src = 'assets/images/lawn3.jpg';
+  // Prefer sampling the page background (lawn3). If we're in a subfolder (e.g., /services/), prefix with ../
+  const isInServices = (typeof location !== 'undefined') && location.pathname && location.pathname.includes('/services/');
+  const prefix = isInServices ? '../' : '';
+  src = `${prefix}assets/images/lawn3.jpg`;
       // If that image fails later, code will still try hero media via computed style when present
     }
     setPageBgFromImage(src);

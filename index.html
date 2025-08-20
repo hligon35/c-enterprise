@@ -22,17 +22,20 @@
           <img src="assets/images/ceslogo.png" alt="C-Enterprise Services logo" width="50" height="50" />
           <span>C-Enterprise Services</span>
         </a>
-        <button class="nav-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="nav-toggle-bar"></span>
-          <span class="nav-toggle-bar"></span>
-          <span class="nav-toggle-bar"></span>
-        </button>
-        <nav id="site-nav" class="site-nav" role="navigation">
+        <button class="menu-button btn" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Open main menu">Menu</button>
+        <nav id="site-nav" class="site-nav nav-overlay" role="navigation" aria-hidden="true">
           <ul>
             <li><a href="index.html" aria-current="page">Home</a></li>
-            <li><a href="services.html">Services</a></li>
+            <li class="has-submenu">
+              <a href="services/everything-outdoors.html">Services</a>
+              <ul class="submenu">
+                <li><a href="services/everything-outdoors.html">Everything Outdoors</a></li>
+                <li><a href="services/community-services.html">Community Services</a></li>
+                <li><a href="services/transportation.html">Transportation</a></li>
+                <li><a href="services/education.html">Education</a></li>
+              </ul>
+            </li>
             <li><a href="contact.html" class="btn btn-primary">Get a Quote</a></li>
-            <!-- Theme toggle removed: single light theme site -->
           </ul>
         </nav>
       </div>
@@ -48,7 +51,7 @@
             </p>
             <div class="actions">
               <a class="btn btn-primary" href="contact.html">Request a Free Quote</a>
-              <a class="btn btn-ghost" href="services.html">See Services</a>
+              <a class="btn btn-ghost" href="services/everything-outdoors.html">See Services</a>
             </div>
             <ul class="trust">
               <li>Locally owned</li>
@@ -159,7 +162,7 @@
         <div>
           <h3 class="footer-title">Quick links</h3>
           <ul class="list-plain">
-      <li><a href="services.html">Services</a></li>
+  <li><a href="services/everything-outdoors.html">Services</a></li>
       <li><a href="contact.html">Contact</a></li>
             <li><a href="#" aria-disabled="true">Insurance & Licensing</a></li>
           </ul>

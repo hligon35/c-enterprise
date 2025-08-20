@@ -1,3 +1,71 @@
+/* Ensure section header spans all columns in service grid */
+.service-grid > .section-header {
+  grid-column: 1 / -1;
+}
+/* Unified nav overlay styles */
+.nav-overlay {
+  display: none;
+  position: fixed;
+  top: 75px;
+  right: 27%;
+  transform: translateX(50%);
+  min-width: 260px;
+  background: rgba(255,255,255,0.98);
+  border: 1px solid var(--border);
+  border-radius: .8rem;
+  box-shadow: 0 8px 32px var(--shadow);
+  z-index: 100;
+  padding: 1.2rem 1.2rem .8rem 1.2rem;
+  max-width: 96vw;
+}
+.nav-overlay.open {
+  display: block;
+}
+.nav-overlay ul {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: .5rem;
+  padding: 0;
+}
+.nav-overlay li {
+  width: 100%;
+}
+.nav-overlay a {
+  width: 100%;
+  display: block;
+  padding: .6rem 1rem;
+  border-radius: .5rem;
+  font-size: 1.08rem;
+}
+.nav-overlay .submenu {
+  position: static;
+  min-width: 0;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  padding: .2rem 0 .2rem 1.2rem;
+  display: none;
+}
+.nav-overlay li.has-submenu.open > .submenu {
+  display: block;
+}
+.nav-overlay li.has-submenu > a::after {
+  content: '▼';
+  float: right;
+  font-size: .8em;
+  margin-left: .5em;
+}
+@media (max-width: 720px) {
+  .nav-overlay {
+    left: 0;
+    right: 0;
+    min-width: 0;
+    border-radius: 0 0 .8rem .8rem;
+    padding: 1.2rem .5rem .8rem .5rem;
+    top: 56px;
+    transform: none;
+  }
+}
 /* Theme variables */
 :root{
   --brand: #39ff14;      /* neon green */
@@ -64,6 +132,63 @@ img{max-width:100%;display:block}
 .site-nav ul{display:flex;align-items:center;gap:1rem;list-style:none;margin:0;padding:0}
 .site-nav a{color:var(--text);text-decoration:none;padding:.4rem .6rem;border-radius:.4rem}
 .site-nav a[aria-current="page"], .site-nav a:hover{background:var(--hover-bg)}
+
+/* Dropdown nav */
+
+.site-nav li.has-submenu {
+  position: relative;
+}
+.site-nav li.has-submenu > a::after {
+  content: '▼';
+  display: inline-block;
+  margin-left: .45em;
+  font-size: .8em;
+  color: #444;
+  vertical-align: middle;
+  transition: color .15s;
+}
+.site-nav li.has-submenu:hover > a::after,
+.site-nav li.has-submenu:focus-within > a::after {
+  color: #222;
+}
+.site-nav .submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 220px;
+  background: rgba(255,255,255,0.9);
+  border: 1px solid var(--border);
+  border-radius: .6rem;
+  padding: .4rem 0;
+  box-shadow: 0 8px 24px var(--shadow);
+  display: none;
+  z-index: 60;
+}
+.site-nav .submenu li {
+  list-style: none;
+}
+.site-nav .submenu a {
+  display: block;
+  padding: .5rem .8rem;
+  border-radius: 0;
+}
+/* Show submenu on hover or focus of parent */
+.site-nav li.has-submenu:hover > .submenu,
+.site-nav li.has-submenu:focus-within > .submenu {
+  display: block;
+}
+/* Allow JS to open submenu on click */
+.site-nav li.has-submenu.open > .submenu {
+  display: block;
+}
+
+.menu-button{margin-left:.5rem}
+
+/* Mobile: show submenu when parent is open */
+@media (max-width: 720px){
+  .site-nav .submenu{position:static;min-width:0;background:transparent;border:0;box-shadow:none;padding:.25rem 0;display:block}
+  .site-nav .submenu a{padding:.35rem .5rem}
+}
 
 .nav-toggle{display:none;flex-direction:column;gap:3px;background:none;border:0}
 .nav-toggle-bar{width:22px;height:2px;background:var(--text);display:block}
@@ -161,6 +286,11 @@ img{max-width:100%;display:block}
 /* Services page */
 .page-hero{padding:2.25rem 0;border-bottom:1px solid var(--border);background:linear-gradient(180deg, rgba(255,243,0,.10), rgba(0,0,0,0))}
 .service-grid{grid-template-columns: repeat(2, 1fr)}
+
+/* On the main services page, show 4 cards in a row */
+.service-grid.cards-3 {
+  grid-template-columns: repeat(4, 1fr);
+}
 .service{min-height: 100%}
 
 /* Contact */
