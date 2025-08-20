@@ -36,64 +36,72 @@
     return false;
   }
 
-  // THEME MANAGEMENT
-  // Modes: 'auto' (default), 'light', 'dark'
-  const THEME_KEY = 'ces_theme_mode';
+  // Theme removed: site uses single light theme via CSS variables.
   const root = document.body;
-  const btn = document.getElementById('themeToggle');
 
-  function inDaylightHours(d){
-    // Switch at 7am and 7pm local time
-    const h = d.getHours();
-    return h >= 7 && h < 19; // 7:00 <= h < 19:00
+  // BACKGROUND COLOR FROM IMAGE
+  function extractUrlFromCssBg(bg){
+    if(!bg || bg === 'none') return null;
+    // Handles url("..."), url('...'), url(...)
+    const m = bg.match(/url\(["']?(.*?)["']?\)/i);
+    return m && m[1] ? m[1] : null;
   }
 
-  function prefersDark(){
-    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-  }
-
-  function applyTheme(mode){
-    let theme = 'dark';
-    if(mode === 'light' || mode === 'dark'){
-      theme = mode;
-    } else {
-      // auto mode: day => light, night => dark; use system as secondary hint
-      const day = inDaylightHours(new Date());
-      theme = day ? 'light' : 'dark';
-      // Optional: if at boundary or ambiguous, fallback to system
-      if(!day && !prefersDark()) theme = 'dark';
+  function averageColor(img){
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d', { willReadFrequently: true });
+    const w = 16, h = 16;
+    canvas.width = w; canvas.height = h;
+    ctx.drawImage(img, 0, 0, w, h);
+    const data = ctx.getImageData(0, 0, w, h).data;
+    let r=0,g=0,b=0,count=0;
+    for(let i=0;i<data.length;i+=4){
+      const a = data[i+3];
+      if(a === 0) continue; // skip transparent
+      r += data[i]; g += data[i+1]; b += data[i+2]; count++;
     }
-    root.setAttribute('data-theme', theme);
-    if(btn){ btn.textContent = theme === 'dark' ? 'Light' : 'Dark'; }
+    if(count === 0) return null;
+    r = Math.round(r/count); g = Math.round(g/count); b = Math.round(b/count);
+  return { r, g, b };
   }
 
-  function getSavedMode(){
-    return localStorage.getItem(THEME_KEY) || 'auto';
-  }
-  function saveMode(mode){
-    localStorage.setItem(THEME_KEY, mode);
-  }
-
-  // Cycle: auto -> light -> dark -> auto
-  function nextMode(mode){
-    if(mode === 'auto') return 'light';
-    if(mode === 'light') return 'dark';
-    return 'auto';
-  }
-
-  let mode = getSavedMode();
-  applyTheme(mode);
-
-  if(btn){
-    btn.addEventListener('click', () => {
-      mode = nextMode(mode);
-      saveMode(mode);
-      applyTheme(mode);
-    });
+  function setPageBgFromImage(src){
+    try{
+      const img = new Image();
+      img.onload = () => {
+        try{
+          const col = averageColor(img);
+                if(col){
+                  // Set a translucent overlay so the image is visible under it
+                  const overlay = `rgba(${col.r}, ${col.g}, ${col.b}, 0.35)`;
+                  root.style.setProperty('--bg-overlay', overlay);
+                  // --bg remains the metallic base defined in CSS
+                }
+        }catch{}
+      };
+      // Ensure same-origin; assets are local
+      img.crossOrigin = 'anonymous';
+      img.src = src;
+    }catch{}
   }
 
-  // Auto re-evaluate theme at the top of each hour
-  setInterval(() => {
-    if(mode === 'auto') applyTheme(mode);
-  }, 60 * 60 * 1000);
+  function initDynamicBg(){
+    let src = null;
+    const hero = document.querySelector('.hero-media');
+    if(hero){
+      const bg = getComputedStyle(hero).backgroundImage;
+      const u = extractUrlFromCssBg(bg);
+      if(u) src = u;
+    }
+    if(!src){
+      // Prefer sampling the page background (lawn3), fall back to hero (lawn1)
+      src = 'assets/images/lawn3.jpg';
+      // If that image fails later, code will still try hero media via computed style when present
+    }
+    setPageBgFromImage(src);
+  }
+
+  // Run after load to ensure CSS/bg computed and image is reachable
+  if(document.readyState === 'complete') initDynamicBg();
+  else window.addEventListener('load', initDynamicBg);
 })();
