@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contact | C-Enterprise Services</title>
+    <meta name="description" content="Request a free lawn care quote from C-Enterprise Services. Fast responses, flexible scheduling, and professional results." />
+  <meta name="theme-color" content="#000000" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body data-theme="dark">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header" role="banner">
+      <div class="container header-inner">
+        <a class="brand" href="index.html">
+          <img src="assets/favicon.svg" alt="C-Enterprise Services logo" width="32" height="32" />
+          <span>C-Enterprise Services</span>
+        </a>
+        <button class="nav-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </button>
+        <nav id="site-nav" class="site-nav" role="navigation">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html" aria-current="page" class="btn btn-primary">Get a Quote</a></li>
+            <li><button id="themeToggle" class="btn theme-toggle" type="button" aria-label="Toggle theme">Theme</button></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="page-hero">
+        <div class="container">
+          <h1>Get a Free Quote</h1>
+          <p>We typically reply the same day. Tell us about your lawn and schedule.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container grid contact-grid">
+          <form class="card form" action="mailto:hello@ceservices.example" method="post" enctype="text/plain" onsubmit="return window.ces.onMailtoSubmit(event)">
+            <div class="form-row">
+              <label for="name">Name</label>
+              <input id="name" name="Name" type="text" required autocomplete="name" />
+            </div>
+            <div class="form-row">
+              <label for="email">Email</label>
+              <input id="email" name="Email" type="email" required autocomplete="email" />
+            </div>
+            <div class="form-row">
+              <label for="phone">Phone</label>
+              <input id="phone" name="Phone" type="tel" autocomplete="tel" />
+            </div>
+            <div class="form-row">
+              <label for="address">Service address or area</label>
+              <input id="address" name="Address" type="text" autocomplete="street-address" />
+            </div>
+            <div class="form-row">
+              <label for="services">Services needed</label>
+              <select id="services" name="Services">
+                <option>Mowing & Edging</option>
+                <option>Trimming & Detail</option>
+                <option>Seasonal Cleanup</option>
+                <option>Multiple / Not sure</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label for="message">Anything else?</label>
+              <textarea id="message" name="Message" rows="4" placeholder="Preferred days/times, gate codes, pets, terrain, etc."></textarea>
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">Send Request</button>
+              <p class="muted small">Or email us directly: <a href="mailto:hello@ceservices.example">hello@ceservices.example</a></p>
+            </div>
+          </form>
+
+          <aside class="card contact-aside">
+            <h2>Contact</h2>
+            <ul class="list-plain">
+              <li><strong>Phone:</strong> <a href="tel:+15551234567">(555) 123-4567</a></li>
+              <li><strong>Email:</strong> <a href="mailto:hello@ceservices.example">hello@ceservices.example</a></li>
+              <li><strong>Hours:</strong> Mon–Sat 8am–6pm</li>
+            </ul>
+            <h3>Service area</h3>
+            <p>We serve neighborhoods within a 15–20 mile radius. Ask if you’re nearby.</p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="cta">
+        <div class="container cta-inner">
+          <h2>Prefer texting?</h2>
+          <p>Send a quick text with your address and we’ll confirm availability.</p>
+          <a class="btn btn-ghost" href="sms:+15551234567">Text now</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" role="contentinfo">
+      <div class="container fineprint">
+        <p>© <span id="year"></span> C-Enterprise Services. All rights reserved.</p>
+      </div>
+    </footer>
+
+  <script src="assets/js/main.js" defer></script>
+  </body>
+</html>
