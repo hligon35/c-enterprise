@@ -204,9 +204,10 @@ img{max-width:100%;display:block}
 .hero{padding:4.5rem 0;background:radial-gradient(1200px 500px at 80% -20%, rgba(57,255,20,.14), transparent 60%),
   linear-gradient(180deg, rgba(255,243,0,.08), rgba(0,0,0,0) 55%)}
 .hero-grid{grid-template-columns: 1.1fr .9fr;align-items:center}
+.hero-copy{ text-align: center; }
 .hero-copy h1{font-size: clamp(1.8rem, 2.5vw + 1rem, 2.8rem);line-height:1.2;margin:0 0 .7rem}
-.hero-copy p{margin:0 0 1.1rem;color:var(--muted)}
-.trust{display:flex;gap:1rem;flex-wrap:wrap;color:var(--accent);padding:0;margin:.75rem 0 0;list-style: none}
+.hero-copy p{margin:0 0 1.1rem;color:var(--muted);text-align:center}
+.trust{display:flex;gap:1rem;flex-wrap:wrap;color:var(--accent);padding:0;margin:.75rem 0 0;list-style: none;justify-content:center}
 .trust li{background:transparent;color:var(--accent);border:none;border-radius:0;padding:0;margin:0}
 .hero-media{min-height:260px;border-radius:1rem;background-image:linear-gradient(to bottom, rgba(0,0,0,.2), rgba(0,0,0,.4)), url('../images/lawn1.jpg');background-size:cover;background-position:center;box-shadow:0 10px 30px var(--shadow);border:1px solid var(--border)}
 
@@ -224,7 +225,10 @@ img{max-width:100%;display:block}
 }
 .section.alt{background:linear-gradient(180deg, rgba(255,243,0,.06), rgba(0,0,0,0))}
 .section-header h2{margin:.2rem 0 .5rem;font-size:1.6rem}
-.section-header p{color:var(--muted);margin:0}
+.section-header p{color:var(--muted);margin:0;text-align:center}
+
+/* Center all titles sitewide */
+h1, h2, h3{ text-align: center; }
 
 .cards-3{grid-template-columns: repeat(3, 1fr)}
 .card{background:var(--card-bg);color:var(--card-text);border:1px solid var(--card-border);border-radius:.9rem;padding:1rem;box-shadow:0 10px 25px var(--shadow)}
@@ -253,6 +257,11 @@ img{max-width:100%;display:block}
 .fineprint{border-top:1px solid var(--border);padding:1rem 0;color:var(--muted);text-align:center}
 .fineprint p{margin:0}
 
+/* Center footer text under titles */
+.site-footer .footer-grid > div{ text-align: center; }
+.site-footer .brand{ justify-content: center; }
+.site-footer .list-plain{ justify-items: center; }
+
 /* Force paragraph text black in key regions to override other paragraph rules */
 .hero p,
 .hero-copy p,
@@ -280,11 +289,15 @@ img{max-width:100%;display:block}
 .btn-ghost:hover{background:#c0c0c0;color:#000000;transform:translateY(-1px)}
 .btn-lg{padding:.8rem 1.2rem}
 
+/* Center hero buttons row */
+.hero .actions{ display:flex; gap:.6rem; justify-content:center; flex-wrap:wrap }
+
 /* Theme toggle button size tweak */
 .theme-toggle{font-size:.95rem}
 
 /* Services page */
 .page-hero{padding:2.25rem 0;border-bottom:1px solid var(--border);background:linear-gradient(180deg, rgba(255,243,0,.10), rgba(0,0,0,0))}
+.page-hero p{ text-align: center; }
 .service-grid{grid-template-columns: repeat(2, 1fr)}
 
 /* On the main services page, show 4 cards in a row */
