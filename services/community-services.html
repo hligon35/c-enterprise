@@ -5,10 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Community Services | C-Enterprise Services</title>
     <meta name="description" content="Program development, grant writing, public speaking, sports officiating, and counseling services." />
+  <meta name="theme-color" content="#000000" />
+  <meta property="og:title" content="Community Services | C-Enterprise Services" />
+  <meta property="og:description" content="Program development, grant writing, public speaking, sports officiating, and counseling services." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://c-enterpriseservices.com/services/community-services.html" />
+  <meta property="og:image" content="https://c-enterpriseservices.com/assets/images/community.jpg" />
+  <meta property="og:image:alt" content="Community services collage" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Community Services | C-Enterprise Services" />
+  <meta name="twitter:description" content="Program development, grant writing, public speaking, sports officiating, and counseling services." />
+  <meta name="twitter:image" content="https://c-enterpriseservices.com/assets/images/community.jpg" />
+  <link rel="canonical" href="https://c-enterpriseservices.com/services/community-services.html" />
+  <meta name="referrer" content="no-referrer-when-downgrade" />
+  <link rel="preload" as="image" href="../assets/images/community.jpg" fetchpriority="high" />
     <link rel="icon" href="../assets/images/ceslogo.png" type="image/png" />
     <link rel="stylesheet" href="../assets/css/styles.css" />
   </head>
   <body data-theme="light" class="page-community">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Community Services",
+      "serviceType": "Program Development, Grant Writing, Public Speaking, Sports Officiating, Counseling",
+      "provider": {
+        "@type": "Organization",
+        "name": "C-Enterprise Services",
+        "url": "https://c-enterpriseservices.com/"
+      },
+      "areaServed": {
+        "@type": "GeoCircle",
+        "geoMidpoint": {"@type": "GeoCoordinates", "latitude": 36.1627, "longitude": -86.7816},
+        "geoRadius": 80000
+      },
+      "url": "https://c-enterpriseservices.com/services/community-services.html"
+    }
+    </script>
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header" role="banner">
       <div class="container header-inner">
@@ -16,15 +49,15 @@
           <img src="../assets/images/ceslogo.png" alt="C-Enterprise Services logo" width="50" height="50" />
           <span>C-Enterprise Services</span>
         </a>
-        <button class="menu-button btn" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Open main menu">Menu</button>
+  <button class="menu-button btn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="site-nav" aria-label="Open main menu">Menu</button>
         <nav id="site-nav" class="site-nav nav-overlay" role="navigation" aria-hidden="true">
           <ul>
             <li><a href="../index.html">Home</a></li>
-            <li class="has-submenu">
+      <li class="has-submenu">
               <a href="#" onclick="return false">Services</a>
               <ul class="submenu">
                 <li><a href="everything-outdoors.html">Everything Outdoors</a></li>
-                <li><a href="community-services.html">Community Services</a></li>
+        <li><a href="community-services.html" aria-current="page">Community Services</a></li>
                 <li><a href="transportation.html">Transportation</a></li>
                 <li><a href="education.html">Education</a></li>
               </ul>
@@ -39,6 +72,12 @@
         <div class="container">
           <h1>Community Services</h1>
           <p>Engaging programs and support that strengthen neighborhoods and organizations.</p>
+          <div class="hero-media" aria-label="Community engagement collage">
+            <picture>
+              <source srcset="../assets/images/community.jpg" type="image/jpeg" />
+              <img src="../assets/images/community.jpg" alt="Community engagement collage" width="1200" height="800" loading="eager" decoding="async" fetchpriority="high" sizes="(min-width: 960px) 40vw, 90vw" />
+            </picture>
+          </div>
         </div>
       </section>
 
@@ -110,7 +149,7 @@
       <div class="container footer-grid">
         <div>
           <div class="brand row">
-            <img src="../assets/images/ceslogo.png" alt="" width="50" height="50" />
+            <img src="../assets/images/ceslogo.png" alt="" width="50" height="50" loading="lazy" decoding="async" fetchpriority="low" />
             <strong>C-Enterprise Services</strong>
           </div>
           <p class="muted">Professional services: Outdoors, Community, Transportation, Education</p>
@@ -129,7 +168,7 @@
         <div>
           <h3 class="footer-title">Quick links</h3>
           <ul class="list-plain">
-            <li><a href="../services.html">Services</a></li>
+            <li><a href="community-services.html">Services</a></li>
             <li><a href="../contact.html">Contact</a></li>
             <li><a href="#" aria-disabled="true">Insurance & Licensing</a></li>
           </ul>

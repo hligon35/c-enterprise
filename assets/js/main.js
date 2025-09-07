@@ -122,9 +122,15 @@
     let src = null;
     const hero = document.querySelector('.hero-media');
     if(hero){
-      const bg = getComputedStyle(hero).backgroundImage;
-      const u = extractUrlFromCssBg(bg);
-      if(u) src = u;
+      // Prefer an <img> child if present for accurate sampling
+      const heroImg = hero.querySelector('img');
+      if(heroImg && heroImg.getAttribute('src')){
+        src = heroImg.getAttribute('src');
+      } else {
+        const bg = getComputedStyle(hero).backgroundImage;
+        const u = extractUrlFromCssBg(bg);
+        if(u) src = u;
+      }
     }
     if(!src){
   // Prefer sampling the page background (lawn3). If we're in a subfolder (e.g., /services/), prefix with ../

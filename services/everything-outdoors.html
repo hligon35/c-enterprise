@@ -5,10 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Everything Outdoors | C-Enterprise Services</title>
     <meta name="description" content="Lawn service, landscaping, powerwashing, and painting for homes and businesses." />
+  <meta name="theme-color" content="#000000" />
+  <link rel="canonical" href="https://c-enterpriseservices.com/services/everything-outdoors.html" />
+  <meta name="referrer" content="no-referrer-when-downgrade" />
+  <meta property="og:title" content="Everything Outdoors | C-Enterprise Services" />
+  <meta property="og:description" content="Lawn service, landscaping, powerwashing, and painting for homes and businesses." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://c-enterpriseservices.com/services/everything-outdoors.html" />
+  <meta property="og:image" content="https://c-enterpriseservices.com/assets/images/lawn3.jpg" />
+  <meta property="og:image:alt" content="Freshly cut green lawn" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Everything Outdoors | C-Enterprise Services" />
+  <meta name="twitter:description" content="Lawn service, landscaping, powerwashing, and painting for homes and businesses." />
+  <meta name="twitter:image" content="https://c-enterpriseservices.com/assets/images/lawn3.jpg" />
+  <link rel="preload" as="image" href="../assets/images/lawn3.jpg" fetchpriority="high" />
     <link rel="icon" href="../assets/images/ceslogo.png" type="image/png" />
     <link rel="stylesheet" href="../assets/css/styles.css" />
   </head>
   <body data-theme="light">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Everything Outdoors",
+      "serviceType": "Lawn Service, Landscaping, Powerwashing, Painting",
+      "provider": {
+        "@type": "Organization",
+        "name": "C-Enterprise Services",
+        "url": "https://c-enterpriseservices.com/"
+      },
+      "areaServed": {
+        "@type": "GeoCircle",
+        "geoMidpoint": {"@type": "GeoCoordinates", "latitude": 36.1627, "longitude": -86.7816},
+        "geoRadius": 80000
+      },
+      "url": "https://c-enterpriseservices.com/services/everything-outdoors.html"
+    }
+    </script>
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header" role="banner">
       <div class="container header-inner">
@@ -16,14 +49,14 @@
           <img src="../assets/images/ceslogo.png" alt="C-Enterprise Services logo" width="50" height="50" />
           <span>C-Enterprise Services</span>
         </a>
-        <button class="menu-button btn" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Open main menu">Menu</button>
+  <button class="menu-button btn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="site-nav" aria-label="Open main menu">Menu</button>
         <nav id="site-nav" class="site-nav nav-overlay" role="navigation" aria-hidden="true">
           <ul>
             <li><a href="../index.html">Home</a></li>
             <li class="has-submenu">
               <a href="#" onclick="return false">Services</a>
               <ul class="submenu">
-                <li><a href="everything-outdoors.html">Everything Outdoors</a></li>
+                <li><a href="everything-outdoors.html" aria-current="page">Everything Outdoors</a></li>
                 <li><a href="community-services.html">Community Services</a></li>
                 <li><a href="transportation.html">Transportation</a></li>
                 <li><a href="education.html">Education</a></li>
@@ -58,7 +91,12 @@
               <li>Satisfaction guaranteed</li>
             </ul>
           </div>
-           <div class="hero-media" role="img" aria-label="Freshly cut green lawn with clean edging"></div>
+           <div class="hero-media">
+             <picture>
+               <source srcset="../assets/images/lawn3.jpg" type="image/jpeg" />
+               <img src="../assets/images/lawn3.jpg" alt="Freshly cut green lawn with clean edging" width="1200" height="800" loading="eager" decoding="async" fetchpriority="high" sizes="(min-width: 960px) 40vw, 90vw" />
+             </picture>
+           </div>
         </div>
       </section>
 
@@ -142,7 +180,7 @@
       <div class="container footer-grid">
         <div>
           <div class="brand row">
-            <img src="../assets/images/ceslogo.png" alt="" width="50" height="50" />
+            <img src="../assets/images/ceslogo.png" alt="" width="50" height="50" loading="lazy" decoding="async" fetchpriority="low" />
             <strong>C-Enterprise Services</strong>
           </div>
           <p class="muted">Professional services: Outdoors, Community, Transportation, Education</p>
@@ -161,7 +199,7 @@
         <div>
           <h3 class="footer-title">Quick links</h3>
           <ul class="list-plain">
-            <li><a href="../services.html">Services</a></li>
+            <li><a href="community-services.html">Services</a></li>
             <li><a href="../contact.html">Contact</a></li>
             <li><a href="#" aria-disabled="true">Insurance & Licensing</a></li>
           </ul>

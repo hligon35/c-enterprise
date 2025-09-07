@@ -1,0 +1,1 @@
+Git hooks managed by Husky. Do not edit hook scripts manually; use `npx husky add`.

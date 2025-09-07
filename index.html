@@ -6,15 +6,46 @@
   <title>C-Enterprise Services | Professional Services for Home, Community, and Business</title>
   <meta name="description" content="C-Enterprise Services delivers practical, people-first solutions across four areas: Everything Outdoors, Community Services, Transportation, and Education. Insured, reliable, and responsive." />
   <meta name="theme-color" content="#000000" />
-  <link rel="icon" href="assets/images/ceslogo.png" type="image/svg+xml" />
+  <link rel="icon" href="assets/images/ceslogo.png" type="image/png" />
   <meta property="og:title" content="C-Enterprise Services | Professional Services for Home, Community, and Business" />
   <meta property="og:description" content="Practical, people-first solutions across Everything Outdoors, Community Services, Transportation, and Education." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://c-enterpriseservices.com/" />
-  <meta property="og:image" content="assets/images/business.jpg" />
+  <meta property="og:image" content="https://c-enterpriseservices.com/assets/images/og-lawn.jpg" />
+  <meta property="og:image:alt" content="Green, well-kept lawn representing C-Enterprise services" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="C-Enterprise Services | Professional Services for Home, Community, and Business" />
+  <meta name="twitter:description" content="Practical, people-first solutions across Everything Outdoors, Community Services, Transportation, and Education." />
+  <meta name="twitter:image" content="https://c-enterpriseservices.com/assets/images/og-lawn.jpg" />
+  <link rel="canonical" href="https://c-enterpriseservices.com/" />
+  <meta name="referrer" content="no-referrer-when-downgrade" />
+  <link rel="preload" as="image" href="assets/images/business2.jpg" fetchpriority="high" />
   <link rel="stylesheet" href="assets/css/styles.css" />
   </head>
   <body data-theme="light" class="home">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "C-Enterprise Services",
+      "url": "https://c-enterpriseservices.com/",
+      "logo": "https://c-enterpriseservices.com/assets/images/ceslogo.png",
+      "sameAs": []
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "url": "https://c-enterpriseservices.com/",
+      "name": "C-Enterprise Services",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://c-enterpriseservices.com/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header" role="banner">
       <div class="container header-inner">
@@ -22,7 +53,7 @@
           <img src="assets/images/ceslogo.png" alt="C-Enterprise Services logo" width="50" height="50" />
           <span>C-Enterprise Services</span>
         </a>
-        <button class="menu-button btn" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Open main menu">Menu</button>
+  <button class="menu-button btn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="site-nav" aria-label="Open main menu">Menu</button>
         <nav id="site-nav" class="site-nav nav-overlay" role="navigation" aria-hidden="true">
           <ul>
             <li><a href="index.html" aria-current="page">Home</a></li>
@@ -58,7 +89,12 @@
               <li>Flexible scheduling</li>
             </ul>
           </div>
-           <div class="hero-media" role="img" aria-label="Collage representing C-Enterprise service areas"></div>
+           <div class="hero-media">
+             <picture>
+               <source srcset="assets/images/business2.jpg" type="image/jpeg" />
+               <img src="assets/images/business2.jpg" alt="Collage representing C-Enterprise service areas" width="1200" height="800" loading="eager" decoding="async" fetchpriority="high" sizes="(min-width: 960px) 40vw, 90vw" />
+             </picture>
+           </div>
         </div>
       </section>
 
@@ -152,7 +188,7 @@
       <div class="container footer-grid">
         <div>
           <div class="brand row">
-            <img src="assets/images/ceslogo.png" alt="" width="50" height="50" />
+            <img src="assets/images/ceslogo.png" alt="" width="50" height="50" loading="lazy" decoding="async" fetchpriority="low" />
             <strong>C-Enterprise Services</strong>
           </div>
           <p class="muted">Professional services: Outdoors, Community, Transportation, Education</p>
@@ -171,7 +207,7 @@
         <div>
           <h3 class="footer-title">Quick links</h3>
           <ul class="list-plain">
-            <li><a href="services.html">Services</a></li>
+            <li><a href="services/community-services.html">Services</a></li>
             <li><a href="contact.html">Contact</a></li>
             <li><a href="#" aria-disabled="true">Insurance & Licensing</a></li>
           </ul>

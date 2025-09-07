@@ -5,11 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Contact | C-Enterprise Services</title>
     <meta name="description" content="Request a free lawn care quote from C-Enterprise Services. Fast responses, flexible scheduling, and professional results." />
+  <meta property="og:title" content="Contact | C-Enterprise Services" />
+  <meta property="og:description" content="Request a free quote. Fast responses, flexible scheduling, and professional results." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://c-enterpriseservices.com/contact.html" />
+  <meta property="og:image" content="https://c-enterpriseservices.com/assets/images/ceslogo.png" />
+  <meta property="og:image:alt" content="C-Enterprise logo" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Contact | C-Enterprise Services" />
+  <meta name="twitter:description" content="Request a free quote. Fast responses, flexible scheduling, and professional results." />
+  <meta name="twitter:image" content="https://c-enterpriseservices.com/assets/images/ceslogo.png" />
   <meta name="theme-color" content="#000000" />
+  <link rel="canonical" href="https://c-enterpriseservices.com/contact.html" />
+  <meta name="referrer" content="no-referrer-when-downgrade" />
   <link rel="icon" href="assets/images/ceslogo.png" type="image/png" />
   <link rel="stylesheet" href="assets/css/styles.css" />
   </head>
   <body data-theme="light">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ContactPage",
+      "url": "https://c-enterpriseservices.com/contact.html",
+      "name": "Contact | C-Enterprise Services"
+    }
+    </script>
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header" role="banner">
       <div class="container header-inner">
@@ -17,7 +37,7 @@
           <img src="assets/images/ceslogo.png" alt="C-Enterprise Services logo" width="50" height="50" />
           <span>C-Enterprise Services</span>
         </a>
-        <button class="menu-button btn" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Open main menu">Menu</button>
+  <button class="menu-button btn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="site-nav" aria-label="Open main menu">Menu</button>
         <nav id="site-nav" class="site-nav nav-overlay" role="navigation" aria-hidden="true">
           <ul>
             <li><a href="index.html">Home</a></li>
@@ -52,7 +72,7 @@
             </div>
             <div class="form-row">
               <label for="email">Email</label>
-              <input id="email" name="Email" type="email" required autocomplete="email" />
+              <input id="email" name="Email" type="email" required autocomplete="email" inputmode="email" pattern="[^\s@]+@[^\s@]+\.[^\s@]+" />
             </div>
             <div class="form-row">
               <label for="phone">Phone</label>
@@ -107,7 +127,7 @@
       <div class="container footer-grid">
         <div>
           <div class="brand row">
-            <img src="assets/images/ceslogo.png" alt="" width="50" height="50" />
+            <img src="assets/images/ceslogo.png" alt="" width="50" height="50" loading="lazy" decoding="async" fetchpriority="low" />
             <strong>C-Enterprise Services</strong>
           </div>
           <p class="muted">Professional services: Outdoors, Community, Transportation, Education</p>
@@ -126,7 +146,7 @@
         <div>
           <h3 class="footer-title">Quick links</h3>
           <ul class="list-plain">
-            <li><a href="services.html">Services</a></li>
+            <li><a href="services/community-services.html">Services</a></li>
             <li><a href="contact.html">Contact</a></li>
             <li><a href="#" aria-disabled="true">Insurance & Licensing</a></li>
           </ul>

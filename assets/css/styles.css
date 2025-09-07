@@ -118,6 +118,26 @@ body{
 }
 img{max-width:100%;display:block}
 
+/* Accessibility: clear focus outlines and reduced motion support */
+/* Show a consistent, high-contrast focus ring only when keyboard focusing */
+:where(a, button, [role="button"], input, select, textarea, summary, .btn, .nav-toggle, .menu-button):focus-visible{
+  outline: 3px solid var(--ring);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--ring), transparent 55%);
+}
+/* Remove default outline on mouse click focusing to avoid double rings */
+:where(a, button, [role="button"], input, select, textarea, summary, .btn):focus{outline: none}
+
+/* Respect user reduced motion preference */
+@media (prefers-reduced-motion: reduce){
+  *, *::before, *::after{
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 /* Home page: swap full-page background image */
 body.home{
   background:
@@ -137,9 +157,6 @@ body.page-community{
     url('../images/community.jpg') center/cover no-repeat,
     linear-gradient(var(--bg), var(--bg));
 }
-body.page-community .hero-media{
-  background-image:linear-gradient(to bottom, rgba(0,0,0,.2), rgba(0,0,0,.4)), url('../images/community.jpg');
-}
 
 /* Ensure service card buttons align when wrapped in p tags */
 .service.card p:last-child{margin-top:auto}
@@ -153,9 +170,6 @@ body.page-education{
     url('../images/education.jpg') center/cover no-repeat,
     linear-gradient(var(--bg), var(--bg));
 }
-body.page-education .hero-media{
-  background-image:linear-gradient(to bottom, rgba(0,0,0,.2), rgba(0,0,0,.4)), url('../images/education.jpg');
-}
 
 /* Transportation page backgrounds */
 body.page-transportation{
@@ -165,9 +179,6 @@ body.page-transportation{
     linear-gradient(0deg, var(--bg-overlay), var(--bg-overlay)),
     url('../images/transport.webp') center/cover no-repeat,
     linear-gradient(var(--bg), var(--bg));
-}
-body.page-transportation .hero-media{
-  background-image:linear-gradient(to bottom, rgba(0,0,0,.2), rgba(0,0,0,.4)), url('../images/transport.webp');
 }
 
 .container{width:min(1100px, 92%);margin-inline:auto}
@@ -261,7 +272,9 @@ body.page-transportation .hero-media{
 .hero-copy p{margin:0 0 1.1rem;color:var(--muted);text-align:center}
 .trust{display:flex;gap:1rem;flex-wrap:wrap;color:var(--accent);padding:0;margin:.75rem 0 0;list-style: none;justify-content:center}
 .trust li{background:transparent;color:var(--accent);border:none;border-radius:0;padding:0;margin:0}
-.hero-media{min-height:260px;border-radius:1rem;background-image:linear-gradient(to bottom, rgba(0,0,0,.2), rgba(0,0,0,.4)), url('../images/lawn1.jpg');background-size:cover;background-position:center;box-shadow:0 10px 30px var(--shadow);border:1px solid var(--border)}
+.hero-media{position:relative;min-height:260px;border-radius:1rem;overflow:hidden;box-shadow:0 10px 30px var(--shadow);border:1px solid var(--border)}
+.hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom, rgba(0,0,0,.2), rgba(0,0,0,.4));pointer-events:none}
+.hero-media img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
 
 /* Sections */
 .section{padding:3rem 0}
@@ -314,9 +327,7 @@ h1, h2, h3{ text-align: center; }
 .cta-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem}
 
 /* Home page: use business background in hero */
-body.home .hero-media{
-  background-image:linear-gradient(to bottom, rgba(0,0,0,.2), rgba(0,0,0,.4)), url('../images/business.jpg');
-}
+/* When using <img> inside .hero-media, no background-image override is needed */
 
 /* Footer */
 .site-footer{border-top:1px solid var(--border);margin-top:3rem}
@@ -388,12 +399,43 @@ body.home .hero-media{
 @media (max-width: 960px){
   .hero-grid{grid-template-columns: 1fr}
   .cards-3{grid-template-columns: repeat(2, 1fr)}
+  /* Ensure the more specific service-grid variant also collapses on tablet */
+  .service-grid.cards-3{grid-template-columns: repeat(2, 1fr)}
   .steps{grid-template-columns: 1fr}
   .footer-grid{grid-template-columns: 1fr 1fr}
   .contact-grid{grid-template-columns: 1fr}
   .service-grid{grid-template-columns: 1fr}
   .cta-inner{flex-direction:column;align-items:flex-start}
+  /* Center text in content containers on tablet */
+  .cards-3 .card,
+  .service.card,
+  .testimonials .card,
+  .steps li { text-align: center; }
+  .list-plain { justify-items: center; }
+}
+@media (max-width: 720px){
+  /* Friendlier CTA alignment on small tablets and large phones */
+  .cta-inner{align-items:center;text-align:center}
+  /* Keep content centered on small tablets */
+  .cards-3 .card,
+  .service.card,
+  .testimonials .card,
+  .steps li { text-align: center; }
 }
 @media (max-width: 520px){
   .cards-3{grid-template-columns: 1fr}
+  /* Footer stacks to single column on narrow phones */
+  .footer-grid{grid-template-columns: 1fr}
+  /* Stronger rule so the 4-up services variant also becomes single column */
+  .service-grid.cards-3{grid-template-columns: 1fr}
+  /* Comfort spacing on small screens */
+  .hero{padding:3rem 0}
+  .section > .container{padding:1rem}
+  /* Center CTA children text */
+  .cta-inner > *{text-align:center}
+  /* Center content cards and steps on phones */
+  .cards-3 .card,
+  .service.card,
+  .testimonials .card,
+  .steps li { text-align: center; }
 }

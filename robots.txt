@@ -1,0 +1,5 @@
+# robots.txt for C-Enterprise Services
+User-agent: *
+Allow: /
+
+Sitemap: https://c-enterpriseservices.com/sitemap.xml
