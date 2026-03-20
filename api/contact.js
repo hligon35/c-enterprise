@@ -78,9 +78,9 @@ function buildTextTemplate({ name, email, message }) {
   ].join('\n');
 }
 
-async function sendSendGridRequest(url, apiKey, payload) {
+async function sendSendGridRequest(url, apiKey, payload, method = 'POST') {
   const response = await fetch(url, {
-    method: 'POST',
+    method,
     headers: {
       Authorization: `Bearer ${apiKey}`,
       'Content-Type': 'application/json',
@@ -207,10 +207,13 @@ export default async function handler(req, res) {
   };
 
   try {
-    await Promise.all([
-      sendSendGridRequest('https://api.sendgrid.com/v3/mail/send', apiKey, emailPayload),
-      sendSendGridRequest('https://api.sendgrid.com/v3/marketing/contacts', apiKey, marketingPayload),
-    ]);
+    await sendSendGridRequest('https://api.sendgrid.com/v3/mail/send', apiKey, emailPayload);
+
+    try {
+      await sendSendGridRequest('https://api.sendgrid.com/v3/marketing/contacts', apiKey, marketingPayload, 'PUT');
+    } catch (_error) {
+      // Allow form delivery to succeed even if list sync is temporarily unavailable.
+    }
 
     logToGoogleScript(googleScriptUrl, googleScriptSecret, {
       name: trimmedName,
