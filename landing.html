@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>C-Enterprise Services | Request Information</title>
+    <meta
+      name="description"
+      content="Learn how C-Enterprise Services supports homes, families, and organizations with dependable outdoor, transportation, education, and community services."
+    />
+    <meta name="theme-color" content="#000000" />
+    <link rel="icon" href="assets/images/ceslogo.png" type="image/png" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body data-theme="light" class="landing-page">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header landing-header" role="banner">
+      <div class="container landing-header-inner">
+        <a class="brand" href="index.html" aria-label="C-Enterprise Services home">
+          <img src="assets/images/ceslogo.png" alt="C-Enterprise Services logo" width="50" height="50" />
+          <span>C-Enterprise Services</span>
+        </a>
+        <a class="btn btn-primary" href="tel:+16157177557">Call Now</a>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero landing-hero">
+        <div class="container landing-shell">
+          <div class="landing-panel card">
+            <p class="landing-eyebrow">Website update in progress</p>
+            <h1 class="landing-title">C-Enterprise Services is currently under construction.</h1>
+            <p class="landing-subhead">
+              We provide practical support for homes, families, community organizations, and businesses across outdoor services, transportation, education, and community-focused work.
+            </p>
+            <p class="landing-note">
+              Full website details are being updated. For service questions, scheduling, or quote requests, please contact us directly.
+            </p>
+
+            <div class="landing-contact-block">
+              <p><strong>Phone:</strong> <a href="tel:+16157177557">(615) 717-7557</a></p>
+              <p><strong>Email:</strong> <a href="mailto:info@c-enterpriseservices.com">info@c-enterpriseservices.com</a></p>
+            </div>
+
+            <form
+              class="form landing-mini-form"
+              action="/api/contact"
+              method="post"
+              data-api-endpoint="/api/contact"
+              data-mailto-to="info@c-enterpriseservices.com"
+              data-mailto-subject="Landing page inquiry"
+              data-success-message="Thanks. Your message has been sent."
+              data-error-message="We could not send your message right now. Please call or email us directly."
+              onsubmit="return window.ces.onContactSubmit(event)"
+            >
+              <div class="form-row">
+                <label for="landing-name">Name</label>
+                <input id="landing-name" name="Name" type="text" required autocomplete="name" />
+              </div>
+              <div class="form-row">
+                <label for="landing-email">Email</label>
+                <input id="landing-email" name="Email" type="email" required autocomplete="email" />
+              </div>
+              <div class="form-row">
+                <label for="landing-message">Message</label>
+                <textarea id="landing-message" name="Message" rows="3" placeholder="Tell us what you need."></textarea>
+              </div>
+              <div class="form-actions landing-form-actions">
+                <button type="submit" class="btn btn-primary">Send Message</button>
+              </div>
+              <p class="landing-form-status" role="status" aria-live="polite"></p>
+            </form>
+
+            <div class="actions landing-actions">
+              <a class="btn btn-primary" href="tel:+16157177557">Call the Company</a>
+            </div>
+
+            <p class="landing-footnote">Thank you for your patience while the site is being refreshed.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="assets/js/main.js" defer></script>
+  </body>
+</html>
