@@ -49,5 +49,22 @@ function jsonResponse_(payload, status) {
 }
 
 function setupWebhookSecret(secret) {
-  PropertiesService.getScriptProperties().setProperty('WEBHOOK_SECRET', secret);
+  const normalizedSecret = String(secret || '').trim();
+
+  if (!normalizedSecret) {
+    throw new Error("Provide a non-empty string, for example: setupWebhookSecret('your-secret-here')");
+  }
+
+  PropertiesService.getScriptProperties().setProperty('WEBHOOK_SECRET', normalizedSecret);
+  return 'Webhook secret saved.';
+}
+
+function saveWebhookSecretOnce() {
+  const secret = 'PASTE_YOUR_WEBHOOK_SECRET_HERE';
+
+  if (secret === 'PASTE_YOUR_WEBHOOK_SECRET_HERE') {
+    throw new Error("Edit saveWebhookSecretOnce() first and replace PASTE_YOUR_WEBHOOK_SECRET_HERE with your real secret.");
+  }
+
+  return setupWebhookSecret(secret);
 }

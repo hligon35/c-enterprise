@@ -3,14 +3,68 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>C-Enterprise Services | Request Information</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>C-Enterprise Services | Outdoor, Transportation, Education and Community Support</title>
     <meta
       name="description"
-      content="Learn how C-Enterprise Services supports homes, families, and organizations with dependable outdoor, transportation, education, and community services."
+      content="C-Enterprise Services provides outdoor, transportation, education, and community support with direct contact options while the full website is being refreshed."
     />
+    <meta
+      name="keywords"
+      content="C-Enterprise Services, outdoor services, transportation support, education services, community services, business support, Tennessee services"
+    />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="format-detection" content="telephone=no, date=no, email=no, address=no" />
     <meta name="theme-color" content="#000000" />
+    <link rel="canonical" href="https://c-enterpriseservices.com/" />
+    <link rel="preload" as="image" href="assets/images/CES3D.webp" type="image/webp" />
+    <link rel="preload" as="image" href="assets/images/ceslogo.png" />
     <link rel="icon" href="assets/images/ceslogo.png" type="image/png" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="C-Enterprise Services" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:title" content="C-Enterprise Services | Outdoor, Transportation, Education and Community Support" />
+    <meta property="og:description" content="Contact C-Enterprise Services for outdoor, transportation, education, and community support while the full site is being updated." />
+    <meta property="og:url" content="https://c-enterpriseservices.com/" />
+    <meta property="og:image" content="https://c-enterpriseservices.com/assets/images/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="C-Enterprise Services | Outdoor, Transportation, Education and Community Support" />
+    <meta name="twitter:description" content="Contact C-Enterprise Services for outdoor, transportation, education, and community support while the full site is being updated." />
+    <meta name="twitter:image" content="https://c-enterpriseservices.com/assets/images/og-image.jpg" />
+
     <link rel="stylesheet" href="assets/css/styles.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "name": "C-Enterprise Services",
+            "url": "https://c-enterpriseservices.com/"
+          },
+          {
+            "@type": "LocalBusiness",
+            "name": "C-Enterprise Services",
+            "url": "https://c-enterpriseservices.com/",
+            "telephone": "+1-615-717-7557",
+            "email": "info@c-enterpriseservices.com",
+            "image": "https://c-enterpriseservices.com/assets/images/og-image.jpg",
+            "description": "Outdoor, transportation, education, and community support services for homes, families, organizations, and businesses.",
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "contactType": "customer service",
+              "telephone": "+1-615-717-7557",
+              "email": "info@c-enterpriseservices.com"
+            }
+          }
+        ]
+      }
+    </script>
   </head>
   <body data-theme="light" class="landing-page">
     <a class="skip-link" href="#main">Skip to content</a>
@@ -18,7 +72,7 @@
     <header class="site-header landing-header" role="banner">
       <div class="container landing-header-inner">
         <a class="brand" href="index.html" aria-label="C-Enterprise Services home">
-          <img src="assets/images/ceslogo.png" alt="C-Enterprise Services logo" width="50" height="50" />
+          <img src="assets/images/ceslogo.png" alt="C-Enterprise Services logo" width="50" height="50" decoding="async" />
           <span>C-Enterprise Services</span>
         </a>
         <a class="btn btn-primary" href="tel:+16157177557">Call Now</a>
@@ -38,38 +92,39 @@
               Full website details are being updated. For service questions, scheduling, or quote requests, please contact us directly.
             </p>
 
-            <div class="landing-contact-block">
+            <h2 class="visually-hidden" id="contact-info-heading">Direct contact information</h2>
+            <address class="landing-contact-block" aria-labelledby="contact-info-heading">
               <p><strong>Phone:</strong> <a href="tel:+16157177557">(615) 717-7557</a></p>
               <p><strong>Email:</strong> <a href="mailto:info@c-enterpriseservices.com">info@c-enterpriseservices.com</a></p>
-            </div>
+            </address>
 
             <form
               class="form landing-mini-form"
               action="/api/contact"
               method="post"
               data-api-endpoint="/api/contact"
-              data-mailto-to="info@c-enterpriseservices.com"
-              data-mailto-subject="Landing page inquiry"
               data-success-message="Thanks. Your message has been sent."
               data-error-message="We could not send your message right now. Please call or email us directly."
-              onsubmit="return window.ces.onContactSubmit(event)"
+              aria-describedby="landing-form-description landing-form-status"
             >
+              <h2 class="visually-hidden">Contact form</h2>
+              <p class="visually-hidden" id="landing-form-description">Send your name, email, and a brief message to contact C-Enterprise Services.</p>
               <div class="form-row">
                 <label for="landing-name">Name</label>
-                <input id="landing-name" name="Name" type="text" required autocomplete="name" />
+                <input id="landing-name" name="Name" type="text" required autocomplete="name" maxlength="120" />
               </div>
               <div class="form-row">
                 <label for="landing-email">Email</label>
-                <input id="landing-email" name="Email" type="email" required autocomplete="email" />
+                <input id="landing-email" name="Email" type="email" required autocomplete="email" inputmode="email" maxlength="254" />
               </div>
               <div class="form-row">
                 <label for="landing-message">Message</label>
-                <textarea id="landing-message" name="Message" rows="3" placeholder="Tell us what you need."></textarea>
+                <textarea id="landing-message" name="Message" rows="3" placeholder="Tell us what you need." maxlength="1000"></textarea>
               </div>
               <div class="form-actions landing-form-actions">
                 <button type="submit" class="btn btn-primary">Send Message</button>
               </div>
-              <p class="landing-form-status" role="status" aria-live="polite"></p>
+              <p class="landing-form-status" id="landing-form-status" role="status" aria-live="polite"></p>
             </form>
 
             <div class="actions landing-actions">

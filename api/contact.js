@@ -1,5 +1,9 @@
 const COMPANY_NAME = process.env.COMPANY_NAME || 'C-Enterprise Services';
 const COMPANY_PHONE = process.env.COMPANY_PHONE || '(615) 717-7557';
+const MAX_NAME_LENGTH = 120;
+const MAX_EMAIL_LENGTH = 254;
+const MAX_MESSAGE_LENGTH = 1000;
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function escapeHtml(value) {
   return String(value || '')
@@ -114,9 +118,16 @@ async function logToGoogleScript(webhookUrl, secret, payload) {
 }
 
 export default async function handler(req, res) {
+  res.setHeader('Cache-Control', 'no-store');
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
     return res.status(405).json({ error: 'Method not allowed' });
+  }
+
+  if (!String(req.headers['content-type'] || '').includes('application/json')) {
+    return res.status(415).json({ error: 'Unsupported media type' });
   }
 
   const apiKey = process.env.SENDGRID_API_KEY;
@@ -139,6 +150,18 @@ export default async function handler(req, res) {
 
   if (!trimmedName || !trimmedEmail) {
     return res.status(400).json({ error: 'Name and email are required' });
+  }
+
+  if (
+    trimmedName.length > MAX_NAME_LENGTH ||
+    trimmedEmail.length > MAX_EMAIL_LENGTH ||
+    trimmedMessage.length > MAX_MESSAGE_LENGTH
+  ) {
+    return res.status(400).json({ error: 'Form input exceeds allowed length' });
+  }
+
+  if (!EMAIL_PATTERN.test(trimmedEmail)) {
+    return res.status(400).json({ error: 'A valid email is required' });
   }
 
   const emailPayload = {
