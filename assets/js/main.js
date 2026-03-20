@@ -51,17 +51,74 @@
 
   // mailto prefill: build a mailto URL including subject and body
   window.ces = window.ces || {};
+  window.ces.onContactSubmit = async function(e){
+    const form = e.target;
+    const endpoint = form.dataset.apiEndpoint;
+    if(!endpoint){
+      return window.ces.onMailtoSubmit(e);
+    }
+
+    const status = form.querySelector('.landing-form-status');
+    const submitButton = form.querySelector('button[type="submit"]');
+    const name = form.elements['Name']?.value || '';
+    const email = form.elements['Email']?.value || '';
+    const message = form.elements['Message']?.value || '';
+
+    e.preventDefault();
+
+    if(status){
+      status.textContent = 'Sending...';
+      status.classList.remove('is-error', 'is-success');
+    }
+    if(submitButton){
+      submitButton.disabled = true;
+    }
+
+    try{
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, message })
+      });
+
+      if(!response.ok){
+        throw new Error('Request failed');
+      }
+
+      form.reset();
+      if(status){
+        status.textContent = form.dataset.successMessage || 'Thanks. Your message has been sent.';
+        status.classList.add('is-success');
+      }
+    }catch(_error){
+      if(status){
+        status.textContent = form.dataset.errorMessage || 'We could not send your message right now.';
+        status.classList.add('is-error');
+      }
+    }finally{
+      if(submitButton){
+        submitButton.disabled = false;
+      }
+    }
+
+    return false;
+  }
+
   window.ces.onMailtoSubmit = function(e){
     const form = e.target;
-    const email = 'hello@ceservices.example';
-    const name = form.querySelector('#name')?.value || '';
-    const phone = form.querySelector('#phone')?.value || '';
-    const address = form.querySelector('#address')?.value || '';
-    const services = form.querySelector('#services')?.value || '';
-    const message = form.querySelector('#message')?.value || '';
-    const subject = encodeURIComponent(`Lawn care quote request – ${name || 'New lead'}`);
+    const actionTarget = form.getAttribute('action') || '';
+    const actionEmail = actionTarget.startsWith('mailto:') ? actionTarget.slice('mailto:'.length) : '';
+    const email = form.dataset.mailtoTo || actionEmail || 'info@c-enterpriseservices.com';
+    const name = form.elements['Name']?.value || '';
+    const emailValue = form.elements['Email']?.value || '';
+    const phone = form.elements['Phone']?.value || '';
+    const address = form.elements['Address']?.value || '';
+    const services = form.elements['Services']?.value || form.elements['Service Interest']?.value || '';
+    const message = form.elements['Message']?.value || '';
+    const baseSubject = form.dataset.mailtoSubject || 'Service inquiry';
+    const subject = encodeURIComponent(`${baseSubject} - ${name || 'New lead'}`);
     const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${form.querySelector('#email')?.value || ''}\nPhone: ${phone}\nAddress: ${address}\nServices: ${services}\n\nMessage:\n${message}`
+      `Name: ${name}\nEmail: ${emailValue}\nPhone: ${phone}\nAddress: ${address}\nServices: ${services}\n\nMessage:\n${message}`
     );
     const url = `mailto:${email}?subject=${subject}&body=${body}`;
     window.location.href = url;
